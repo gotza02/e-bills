@@ -1,0 +1,96 @@
+/* assets/css/style.css */
+body {
+    font-family: 'Noto Sans Thai', sans-serif;
+    background-color: #f8f9fa; /* Bootstrap light gray */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main.container {
+    flex-grow: 1;
+}
+
+.notes-column-truncate {
+    display: inline-block;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.notes-column-truncate:hover {
+    max-width: 300px; /* Allow more space on hover */
+    white-space: normal;
+    overflow: visible;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 0.25rem;
+}
+
+/* Responsive Table: Card View for Mobile */
+@media (max-width: 767.98px) {
+    .table-responsive-cards > table > thead {
+        display: none;
+    }
+    .table-responsive-cards > table > tbody > tr {
+        display: block;
+        border: 1px solid #dee2e6;
+        border-radius: 0.3rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background-color: #fff;
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    }
+    .table-responsive-cards > table > tbody > tr > td {
+        display: block;
+        text-align: right !important;
+        border: none;
+        border-bottom: 1px dotted #e9ecef;
+        padding: 0.5rem 0 !important;
+        padding-left: 50% !important;
+        position: relative;
+        min-height: 38px;
+    }
+    .table-responsive-cards > table > tbody > tr > td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: calc(50% - 0.5rem);
+        padding-right: 0.5rem;
+        white-space: nowrap;
+        text-align: left !important;
+        font-weight: bold;
+        color: #495057;
+    }
+    .table-responsive-cards > table > tbody > tr > td:last-child {
+        border-bottom: none;
+    }
+    .table-responsive-cards .action-column div { /* Container for action buttons in card view */
+        display: flex !important;
+        flex-direction: column !important; /* Stack buttons vertically in card view */
+        gap: 0.3rem !important; /* Reduced gap for stacked buttons */
+        justify-content: flex-end !important;
+        padding-top: 0.5rem;
+    }
+     .table-responsive-cards .action-column .btn {
+        width: 100%; /* Make buttons full width in card view */
+        font-size: 0.8rem;
+     }
+     .notes-column-truncate { /* On mobile, let notes wrap normally if needed */
+        max-width: none;
+        white-space: normal;
+     }
+     .notes-column-truncate:hover { /* Disable absolute positioning for hover on mobile */
+        position: static;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        z-index: auto;
+        box-shadow: none;
+    }
+}
